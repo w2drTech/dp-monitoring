@@ -7,9 +7,6 @@ import * as yup from "yup";
 import { getStudent, markAttendance } from "../Services/studentAttService";
 import Modal from "@mui/material/Modal";
 import { toast } from "react-toastify";
-import { IconButton } from "@mui/material";
-import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
-import { Link } from "react-router-dom";
 const studentAttendanceKey = "studentAttendanceKey";
 const studentNameKey = "studentName";
 const validationSchema = yup.object().shape({
@@ -48,8 +45,6 @@ const style = {
   textAlign: "center",
 };
 const Attendance = () => {
-  const [current, setCurrent] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
   const [studentName, setStudentName] = useState("");
   const [email, setEmail] = useState("");
   const [pcId, setPcId] = useState("");
@@ -64,7 +59,6 @@ const Attendance = () => {
         pcId: pcId.toLocaleUpperCase(),
       };
       const response = await markAttendance(data);
-      console.log(response);
       const attendanceKey = response.data.retunValue;
       if (response.data.o_sql_msg === "success") {
         localStorage.setItem(studentAttendanceKey, attendanceKey);

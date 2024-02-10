@@ -14,7 +14,7 @@ function App() {
             <Route path="/" element={<AttendanceOut />} />
             <Route path="/register" element={<Register />} />
           </Route>
-            <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
